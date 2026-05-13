@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "example" {
-  bucket = "my-demo-public-bucket-aish-123"
+  bucket = "my-demo-public-bucket-name"
 }
 
 resource "aws_security_group" "web" {

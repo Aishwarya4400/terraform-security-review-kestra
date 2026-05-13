@@ -2,7 +2,7 @@ id: terraform_security_review
 namespace: demo.security
 
 description: |
-  Upload Terraform files, run Checkov, and generate a security report.
+  Upload any Terraform file and scan it with Checkov.
 
 inputs:
   - id: terraform_file
@@ -12,15 +12,27 @@ inputs:
 
 tasks:
   - id: run_checkov
-    type: io.kestra.plugin.scripts.python.Commands
-    containerImage: bridgecrew/checkov:latest
-    warningOnStdErr: false
+    type: io.kestra.plugin.scripts.shell.Commands
+    containerImage: python:3.11-slim
     commands:
-      - cp {{ inputs.terraform_file }} main.tf
-      - checkov -f main.tf --output cli --output-file-path console
+      - apt-get update
+      - apt-get install -y git curl build-essential
+      - pip install --no-cache-dir checkov
+      - 'echo Uploaded file path: {{ inputs.terraform_file }}'
+      - 'cp {{ inputs.terraform_file }} uploaded.tf'
+      - 'echo ===== Uploaded Terraform File ====='
+      - 'cat uploaded.tf'
+      - 'echo =================================='
+      - 'sh -c "checkov -f uploaded.tf > checkov-report.txt || true"'
+      - 'sh -c "checkov -f uploaded.tf -o json > checkov-report.json || true"'
+
+    outputFiles:
+      - uploaded.tf
+      - checkov-report.txt
+      - checkov-report.json
 
 pluginDefaults:
-  - type: io.kestra.plugin.scripts.python.Commands
+  - type: io.kestra.plugin.scripts.shell.Commands
     values:
       taskRunner:
         type: io.kestra.plugin.core.runner.Process
