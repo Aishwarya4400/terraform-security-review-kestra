@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
+# Generated reports (created by the Kestra workflow)
+checkov-report.txt
+checkov-report.json
+uploaded.tf
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp

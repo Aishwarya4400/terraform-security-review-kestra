@@ -88,6 +88,7 @@ terraform-security-review-kestra/
 │   └── terraform-security-review.yml
 ├── terraform/
 │   └── insecure-example.tf
+├── docker-compose.yml
 ├── README.md
 └── .gitignore
 ```
