@@ -49,7 +49,9 @@ Developer uploads Terraform file
             ↓
  Download Security Findings
 ```
+## Workflow Diagram
 
+![Terraform Security Review Assistant](assets/architecture-flow-diagram.png)
 ---
 
 ## Why Kestra?
