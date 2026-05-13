@@ -1,6 +1,6 @@
 # Terraform Security Review Assistant with Kestra
 
-A workflow built with Kestra that scans Terraform files for security and compliance issues using Checkov.
+A workflow built with [Kestra](https://github.com/kestra-io/kestra) that scans Terraform files for security and compliance issues using [Checkov](https://github.com/bridgecrewio/checkov).
 
 ---
 
